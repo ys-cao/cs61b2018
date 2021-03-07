@@ -1,17 +1,17 @@
 /* Double end linked list. */
 public class LinkedListDeque<T> {
+
     /* Create TNode Class. */
     private class TNode {
-        public TNode prev;
-        public TNode next;
-        public T item;
+        private TNode prev;
+        private TNode next;
+        private T item;
 
         public TNode(T t, TNode prv, TNode nxt) {
             item = t;
             next = nxt;
             prev = prv;
         }
-
     }
     /* Create a sentinel node. */
     private TNode sentinel;
@@ -26,16 +26,6 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
     }
-
-    /*
-    public LinkedListDeque(T item) {
-        sentinel.next = new TNode(item, sentinel, null);
-        sentinel.next.prev = sentinel;
-        sentinel.prev = sentinel.next;
-        sentinel.next.next = sentinel;
-        size = 1;
-    }
-    */
 
     /* Add an element to the first. */
     public void addFirst(T item) {
@@ -74,9 +64,10 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /* Removes and returns the item at the front of the deque. If no such item exists, returns null. */
+    /* Removes and returns the item at the front of the deque.
+    If no such item exists, returns null. */
     public T removeFirst() {
-        if (sentinel.next == null) {
+        if (size == 0) {
             return null;
         }
         T t = sentinel.next.item;
@@ -89,9 +80,10 @@ public class LinkedListDeque<T> {
         return t;
     }
 
-    /* Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+    /* Removes and returns the item at the back of the deque.
+    If no such item exists, returns null. */
     public T removeLast() {
-        if (sentinel.prev == null) {
+        if (size == 0) {
             return null;
         }
         T t = sentinel.prev.item;
@@ -104,16 +96,19 @@ public class LinkedListDeque<T> {
         return t;
     }
 
-    /* Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque! */
+    /* Gets the item at the given index, where 0 is the front, 1 is the next item,
+    and so forth. If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
+        if (index < 0 || index > size() - 1) {
+            return null;
+        }
+
         TNode temp = sentinel;
         while (index > 0) {
             index -= 1;
             temp = temp.next;
         }
-        if (temp.item == null) {
-            return null;
-        }
+
         return temp.item;
     }
 
@@ -130,6 +125,7 @@ public class LinkedListDeque<T> {
         if (index == 0) {
             return n.item;
         }
-        return getRecursiveHelper(n.next, index -1);
+        return getRecursiveHelper(n.next, index - 1);
     }
+
 }
