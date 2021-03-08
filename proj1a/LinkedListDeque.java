@@ -104,7 +104,7 @@ public class LinkedListDeque<T> {
         }
 
         TNode temp = sentinel;
-        while (index > 0) {
+        while (index >= 0) {
             index -= 1;
             temp = temp.next;
         }
