@@ -26,6 +26,18 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
     }
+    
+    /* Create a copy of other. */
+    public LinkedListDeque(LinkedListDeque other) {
+        sentinel = new TNode(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+        size = 0;
+
+        for (int i = 0; i <other.size(); i++) {
+            addLast((T) other.get(i));
+        }
+    }
 
     /* Add an element to the first. */
     public void addFirst(T item) {
