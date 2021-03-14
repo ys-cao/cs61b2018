@@ -26,18 +26,18 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
     }
-    
-    /* Create a copy of other. */
+
+    /* Create a copy of other.
     public LinkedListDeque(LinkedListDeque other) {
         sentinel = new TNode(null, null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
 
-        for (int i = 0; i < other.size(); i++) {
+        for (int i = 0; i <other.size(); i++) {
             addLast((T) other.get(i));
         }
-    }
+    }*/
 
     /* Add an element to the first. */
     public void addFirst(T item) {
@@ -133,7 +133,7 @@ public class LinkedListDeque<T> {
     }
 
     /* Helper method for getRecursive. */
-    public T getRecursiveHelper(TNode n, int index) {
+    private T getRecursiveHelper(TNode n, int index) {
         if (index == 0) {
             return n.item;
         }
