@@ -34,7 +34,7 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
         size = 0;
 
-        for (int i = 0; i <other.size(); i++) {
+        for (int i = 0; i < other.size(); i++) {
             addLast((T) other.get(i));
         }
     }
